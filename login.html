@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - BookBase</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+  <div class="login-container"> 
+
+    <h2 style="margin-bottom:25px; font-size:22px;">Welcome Back</h2>
+
+    <form onsubmit="handleLogin(event)">
+
+      <div class="input-group">
+        <label>Username</label>
+        <input 
+          type="text" 
+          placeholder="Enter your username"
+          required
+        >
+      </div>
+
+      <div class="input-group password-wrapper">
+        <label>Password</label>
+        <input 
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+        >
+        <span class="eye-icon" onclick="togglePassword()">👁</span>
+      </div>
+
+      <button type="submit" class="login-btn">
+        LOGIN
+      </button>
+
+    </form>
+
+    <p class="signup-text">
+      Don't have an account? <span>Sign up</span>
+    </p>
+
+  </div>
+
+<script>
+function togglePassword() {
+  const password = document.getElementById("password");
+  if (password.type === "password") {
+    password.type = "text";
+  } else {
+    password.type = "password";
+  }
+}
+
+function handleLogin(event) {
+  event.preventDefault();
+
+  const username = document.querySelector('input[type="text"]').value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  // Your credentials
+  const validUsername = "Hema";
+  const validPassword = "011107";
+
+  if (username === validUsername && password === validPassword) {
+    // Direct redirect to index.html
+    window.location.href = "./index.html";
+  } else {
+    alert("Invalid username or password!");
+  }
+}
+</script>
+</body>
+</html>
