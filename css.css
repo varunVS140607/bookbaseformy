@@ -71,6 +71,42 @@ body {
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.04em;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+/* Shine effect */
+.logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+.logo:hover::after {
+  animation: shine 1s ease forwards;
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
 }
 
 .sidebar ul {
@@ -83,7 +119,11 @@ body {
   cursor: pointer;
   font-size: 14px;
   border-radius: 12px;
-  transition: background 0.25s ease, opacity 0.25s ease, transform 0.2s ease;
+  transition: background 0.25s ease, opacity 0.25s ease, transform 0.02s ease;
+  -webkit-transition: background 0.25s ease, opacity 0.25s ease, transform 0.02s ease;
+  -moz-transition: background 0.25s ease, opacity 0.25s ease, transform 0.02s ease;
+  -ms-transition: background 0.25s ease, opacity 0.25s ease, transform 0.02s ease;
+  -o-transition: background 0.25s ease, opacity 0.25s ease, transform 0.02s ease;
 }
 
 .sidebar ul li:hover {
@@ -334,4 +374,41 @@ section h3 {
 /* Force second-row books to appear in the first row */
 .book.second-row {
   grid-row: 1;
+}
+.sidebar-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-large);
+  border: none;
+  background: linear-gradient(135deg, var(--accent), #ff7c6e);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+  transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+  -webkit-border-radius: var(--radius-large);
+  -moz-border-radius: var(--radius-large);
+  -ms-border-radius: var(--radius-large);
+  -o-border-radius: var(--radius-large);
+}
+.sidebar-btn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+.sidebar-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+.sidebar-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+.sidebar-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
 }
